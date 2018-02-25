@@ -48,6 +48,17 @@ class handlerData {
         });
     }
 
+    UpdateBook(sql,values) {
+        let conn=this.conn;
+        return new Promise( function (resolve,reject) {
+           conn.query(sql,values, function (err,result) {
+               if (err)
+                   reject(err);
+               resolve(result);
+           });
+        });
+    }
+
 }
 
 module.exports=handlerData;
