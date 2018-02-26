@@ -1,5 +1,7 @@
 const express = require('express');
-const middleWare = require('../controllers/middleware/middleware');
+const middleWare = require('../middleware/middleware');
+const checkLength = require('../middleware/titleLength');
+const priceNull =  require('../middleware/priceNull');
 let router = express.Router();
 
 let book_Controller = require('../controllers/bookController');
@@ -15,7 +17,7 @@ router.get('/book/:id',book_Controller.search_book);
 // create book
 
 
-router.post('/book',middleWare.checkTitle,book_Controller.create_book);
+router.post('/book',middleWare,checkLength,priceNull,book_Controller.create_book);
 
 //delete book
 
