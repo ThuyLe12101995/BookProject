@@ -15,7 +15,7 @@ router.get('/book/:id',book_Controller.search_book);
 // create book
 
 
-router.post('/book',[middleWare,book_Controller.create_book]);
+router.post('/book',middleWare.checkTitle,book_Controller.create_book);
 
 //delete book
 

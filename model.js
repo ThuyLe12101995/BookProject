@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 let getBook = 'select * from book';
-let searBook = 'select * from book where id = ?';
+let searBook = 'select * from book where id = ? limit 1';
 let createBook= 'insert into book set ?';
 let deleteBook = 'delete from book where id = ?';
 let updateBook = 'update book set ? where id = ';

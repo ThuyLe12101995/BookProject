@@ -29,7 +29,6 @@ exports.delete_book = function (req,res) {
 };
 
 exports.create_book = function (req,res) {
-
     handler.CreateBook(req.body).then(function (result) {
         res.status(201).send({state:"success",
             ID:result.insertId
