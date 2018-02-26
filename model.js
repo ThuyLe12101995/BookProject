@@ -1,15 +1,19 @@
 const mysql = require('mysql');
-
+let getBook = 'select * from book';
+let searBook = 'select * from book where id = ?';
+let createBook= 'insert into book set ?';
+let deleteBook = 'delete from book where id = ?';
+let updateBook = 'update book set ? where id = ';
 class handlerData {
 
     constructor(config) {
         this.conn=mysql.createConnection(config);
     }
 
-    GetBooks(sql) {
+    GetBooks() {
         let conn = this.conn;
         return new Promise(function (resolve,reject) {
-            conn.query(sql,function (err,result) {
+            conn.query(getBook,function (err,result) {
                 if (err)
                     reject(err);
                 resolve(result);
@@ -17,30 +21,30 @@ class handlerData {
         });
     }
 
-    SearBook(sql,id) {
+    SearBook(id) {
         let conn=this.conn;
         return new Promise(function (resolve,reject) {
-           conn.query(sql,id,function (err,result) {
+           conn.query(searBook,id,function (err,result) {
                if (err)
                    reject(err);
                resolve(result);
            }) ;
         });
     }
-    DeleteBook(sql,id) {
+    DeleteBook(id) {
         let conn=this.conn;
         return new Promise(function (resolve,reject) {
-           conn.query(sql,id,function (err,result) {
+           conn.query(deleteBook,id,function (err,result) {
                if (err)
                    reject(err);
                resolve(result);
            })
         });
     }
-    CreateBook(sql,book) {
+    CreateBook(book) {
         let conn = this.conn;
         return new Promise(function (resolve,reject) {
-            conn.query(sql,book,function (err,result) {
+            conn.query(createBook,book,function (err,result) {
                 if (err)
                     reject(err);
                 resolve(result);
@@ -48,10 +52,10 @@ class handlerData {
         });
     }
 
-    UpdateBook(sql,values) {
+    UpdateBook(id,values) {
         let conn=this.conn;
         return new Promise( function (resolve,reject) {
-           conn.query(sql,values, function (err,result) {
+           conn.query( updateBook+id,values, function (err,result) {
                if (err)
                    reject(err);
                resolve(result);
