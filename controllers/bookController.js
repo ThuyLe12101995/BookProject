@@ -4,27 +4,25 @@ let handler = new handlerData(config);
 
 exports.book_list = function (req,res) {
     handler.GetBooks().then(function (result) {
-        res.json(result);
+        res.send(result);
     });
 };
 
 exports.search_book = function (req,res) {
     handler.SearBook(req.params.id).then(function (result) {
-        res.json(result);
-    }).then(function (err) {
-        res.status(404).send(err);
+        res.send(result);
     });
 };
 
 exports.update_book = function (req,res) {
     handler.UpdateBook(req.params.id,req.body).then(function (result) {
-        res.send(result);
+        res.status(200).send({alert:'success',message:result.message});
     });
 };
 
 exports.delete_book = function (req,res) {
-    handler.DeleteBook(req.params.id).then(function (result) {
-        res.status(200).send(result);
+    handler.SoftDelete(req.params.id).then(function (result) {
+        res.status(200).send({alert:"success",message:result.message});
     });
 };
 
