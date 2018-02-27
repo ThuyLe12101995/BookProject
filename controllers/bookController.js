@@ -1,4 +1,4 @@
-const handlerData = require('../model');
+const handlerData = require('../models');
 const config = require('../config');
 let handler = new handlerData(config);
 

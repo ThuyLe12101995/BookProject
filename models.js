@@ -6,11 +6,9 @@ let createBook= "insert into book set ?, `isdelete`= '0' ";
 let softDelete = 'update book set isdelete = 1 where id = ?';
 let updateBook = 'update book set ? where id =';
 class handlerData {
-
     constructor(config) {
         this.conn=mysql.createConnection(config);
     }
-
     GetBooks() {
         let conn = this.conn;
         return new Promise(function (resolve,reject) {
@@ -21,7 +19,6 @@ class handlerData {
             });
         });
     }
-
     SearBook(id) {
         let conn=this.conn;
         return new Promise(function (resolve,reject) {
@@ -51,9 +48,7 @@ class handlerData {
                resolve(result);
            });
         });
-
     }
-
     CreateBook(book) {
         let conn = this.conn;
         return new Promise(function (resolve,reject) {
