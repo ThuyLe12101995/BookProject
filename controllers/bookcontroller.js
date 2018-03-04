@@ -20,7 +20,7 @@ class BookController {
     editBook(request, response) {
         let bookId = request.params.id;
         let values  = request.body;
-        handlerData.edit(bookId,values).then(function (result) {
+        handlerData.edit(bookId, values).then(function (result) {
            response.status(200).json({ message : result.message });
         });
     }
