@@ -9,13 +9,13 @@ let updateBook  = 'update book set ? where id =';
 class HandlerData {
 
     constructor(config) {
-        this.conn=mysql.createConnection(config);
+        this.conn = mysql.createConnection(config);
     }
 
     all() {
         let conn = this.conn;
-        return new Promise(function (resolve,reject) {
-            conn.query(getBook,function (err,result) {
+        return new Promise(function (resolve, reject) {
+            conn.query(getBook, function (err, result) {
                 if (err)
                     reject(err);
                 resolve(result);
@@ -24,9 +24,9 @@ class HandlerData {
     }
 
     search(id) {
-        let conn=this.conn;
-        return new Promise(function (resolve,reject) {
-           conn.query(searchBook,id,function (err,result) {
+        let conn = this.conn;
+        return new Promise(function (resolve, reject) {
+           conn.query(searchBook, id, function (err, result) {
                if (err)
                    reject(err);
                resolve(result);
@@ -36,8 +36,8 @@ class HandlerData {
 
     remove(id) {
         let conn = this.conn;
-        return new Promise(function (resolve,reject) {
-           conn.query(softDelete,id,function (err,result) {
+        return new Promise(function (resolve, reject) {
+           conn.query(softDelete, id, function (err, result) {
                if (err)
                    reject(err);
                resolve(result);
@@ -47,8 +47,8 @@ class HandlerData {
 
     add(book) {
         let conn = this.conn;
-        return new Promise(function (resolve,reject) {
-            conn.query(createBook,book,function (err,result) {
+        return new Promise(function (resolve, reject) {
+            conn.query(createBook, book, function (err, result) {
                 if (err)
                     reject(err);
                 resolve(result);
@@ -56,10 +56,10 @@ class HandlerData {
         });
     }
 
-    edit(id, values) {
-        let conn=this.conn;
-        return new Promise( function (resolve,reject) {
-           conn.query( updateBook+id,values, function (err,result) {
+    edit(bookId, valuesOfBook) {
+        let conn = this.conn;
+        return new Promise( function (resolve, reject) {
+           conn.query( updateBook+bookId, valuesOfBook, function (err, result) {
                if (err)
                    reject(err);
                resolve(result);
@@ -68,5 +68,4 @@ class HandlerData {
     }
 }
 
-module.exports=HandlerData;
-
+module.exports = HandlerData;
