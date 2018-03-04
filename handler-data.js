@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
-let getBook = "select * from book where isdelete = 0";
-let searchBook = 'select * from book where id = ? and isdelete = 0 limit 1';
-let createBook= "insert into book set ?, `isdelete`= '0' ";
-let softDelete = 'update book set isdelete = 1 where id = ?';
-let updateBook = 'update book set ? where id =';
+let getBook     = "select * from book where isdelete = 0";
+let searchBook  = 'select * from book where id = ? and isdelete = 0 limit 1';
+let createBook  = "insert into book set ?, `isdelete`= '0' ";
+let softDelete  = 'update book set isdelete = 1 where id = ?';
+let updateBook  = 'update book set ? where id =';
 
 class HandlerData {
 
@@ -23,7 +23,7 @@ class HandlerData {
         });
     }
 
-    sear(id) {
+    search(id) {
         let conn=this.conn;
         return new Promise(function (resolve,reject) {
            conn.query(searchBook,id,function (err,result) {

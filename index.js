@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app        = express();
 const router     = require('./routes/');
 
-//Middleware
 app.use(bodyParser.json());
 
 app.use('/', router );

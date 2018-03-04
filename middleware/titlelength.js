@@ -1,6 +1,6 @@
-module.exports =function (req,res,next) {
-  if (req.body.title.length > 40 || req.body.author.length > 100) {
-      return res.status(400).send({message : 'title length must less 40 and  author must less 100'});
-  }
-  next();
+module.exports = function (request, response, next) {
+    if (request.body.title.length > 40 || request.body.author.length > 100) {
+      return response.status(400).json({message : 'title length must < 40 and  author must < 100'});
+    }
+    next();
 };

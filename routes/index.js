@@ -1,28 +1,21 @@
-const express = require('express');
-const titleNull = require('../middleware/titlenull');
-const checkLength = require('../middleware/titlelength');
-const priceNull =  require('../middleware/pricenull');
-let router = express.Router();
-let book_Controller = require('../controllers/bookController');
+const express         = require('express');
+const titleNull       = require('../middleware/titlenull');
+const checkLength     = require('../middleware/titlelength');
+const priceNull       = require('../middleware/pricenull');
+const BookController  = require('../controllers/bookcontroller');
+const Router          = express.Router;
 
-// get list books
+let router         = new Router();
+let bookController = new BookController();
 
-router.get('/books',book_Controller.book_list);
+router.get('/books', bookController.listAllBook);
 
-// get book by id
+router.get('/book/:id', bookController.searchBook);
 
-router.get('/book/:id',book_Controller.search_book);
+router.post('/book', titleNull, checkLength, priceNull, bookController.createBook);
 
-// create book
+router.delete('/book/:id', bookController.deleteBook);
 
-router.post('/book',titleNull,checkLength,priceNull,book_Controller.create_book);
-
-//delete book
-
-router.delete('/book/:id',book_Controller.delete_book);
-
-//update book
-
-router.put('/book/:id',titleNull,checkLength,priceNull,book_Controller.update_book);
+router.put('/book/:id', titleNull, checkLength, priceNull, bookController.editBook);
 
 module.exports = router;

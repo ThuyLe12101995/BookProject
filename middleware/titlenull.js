@@ -1,6 +1,6 @@
-module.exports = function (req,res,next) {
-    if (!req.body.title || !req.body.author) {
-       return res.status(400).send({message:"title or author must not null"});
+module.exports = function (request, response, next) {
+    if (!request.body.title || !request.body.author) {
+       return response.status(400).json({message:"title or author must not null"});
     }
     next();
 };
