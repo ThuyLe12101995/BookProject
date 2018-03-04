@@ -1,7 +1,7 @@
 const express         = require('express');
-const titleNull       = require('../middleware/titlenull');
-const checkLength     = require('../middleware/titlelength');
-const priceNull       = require('../middleware/pricenull');
+const titleNull       = require('../middleware/check-title-null');
+const checkLength     = require('../middleware/check-title-length');
+const priceNull       = require('../middleware/set-price-default');
 const BookController  = require('../controllers/bookcontroller');
 const Router          = express.Router;
 
